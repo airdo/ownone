@@ -1,0 +1,36 @@
+
+<p>
+    Loaded
+</p>
+<% @matches.each do |mtch| %>
+<% if mtch[:time].is_a?(String)      
+     if mtch[:time].downcase == 'live'
+         color = 'PaleGreen'
+       elsif mtch[:time].downcase == 'finished'
+         color = 'IndianRed'
+       else color = 'Beige'
+     end
+   else color = 'Beige'
+   end %>
+    
+<% id=mtch[:m_id]%>
+
+<a href = <%= match_path(id) %>>
+<div class="row" style="background-color: <%= color %>">
+    <div class="col-sm-1">
+        <%= mtch[:time].strftime("%d.%m") if  mtch[:time].is_a?(DateTime)%>
+    </div>
+    <div class="col-sm-3  text-right">
+        <%= mtch[:team1] %><img class="team_logo" src=<%= mtch[:t1_logo] %>>  
+    </div>
+    <div class="col-sm-1 text-center">
+        <%= mtch[:time].is_a?(DateTime) ? mtch[:time].strftime("%H:%M") : mtch[:time] %> 
+    </div>
+    <div class="col-sm-3">
+        <img class="team_logo" src=<%= mtch[:t2_logo] %>>  <%= mtch[:team2] %>
+    </div>
+    <div class="col-sm-2">
+        <a href="<%=mtch[:link]%>">hltv</a> | <%= link_to 'msln',match_path(id) %>  
+    </div>
+</div> </a>
+<% end %>

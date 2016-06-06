@@ -1,0 +1,54 @@
+<div class="container">
+  
+  <% if @match.status==1
+    @color='PaleGreen'
+    elsif @match.status==0
+    @color='IndianRed'
+    else @color='Beige'
+    end %>
+    
+  <div class="row">
+    
+    <div class="col-sm-1 status">
+    
+    </div>
+    <div class="col-sm-4 text-right">
+      
+      <h1><%= @match.team1 %>
+      <img class ="team_logo_80" src=<%= @match.t1_logo %>></h1>
+    </div>
+    <div class="col-sm-1">
+      <div class="col-sm-6">
+        
+      </div>
+      <div class="col-sm-6">
+        
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <h1><img class ="team_logo_80" src=<%= @match.t2_logo %>>
+      <%= @match.team2 %></h1> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3 col-sm-offset-5 text-center">
+      <p>best of <%= @match_stats[:format] %></p>
+    </div>
+    <% n=@match_stats[:format].to_i %>
+    <% for i in 1..n%>
+    <div class="col-sm-3 col-sm-offset-5 text-center">
+      <% reg = /\d?\d:\d?\d/ %>
+      <% stats = @match_stats[:maps][i].text.scan(reg)%>
+      Score on map <%=i%>: <%=stats[0]%> (<%=stats[1]%> : <%=stats[2]%>)
+    </div>
+    <% end %>
+    <a href=<%=@current_match.send %>>Post</a>
+    
+    <%= @t_team %> <%= @t_score %> : <%= @ct_score %> <%= @ct_team %>
+  </div>
+    
+    
+    
+    
+    
+</div>

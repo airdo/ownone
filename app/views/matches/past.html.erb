@@ -1,0 +1,13 @@
+<div class="row">
+<% @matches.each do |match| %>
+    <div class="col-sm-1">
+        <%= match.status %>
+    </div>
+    <div class="col-sm-3">
+        <%= match.team1 %>
+    </div>
+    <div class="col-sm-3">
+        <%= match.team2 %>
+    </div>
+<% end %>
+</div>
