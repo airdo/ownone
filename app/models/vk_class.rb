@@ -1,4 +1,4 @@
-class Vk
+class Vk_test
     
     attr_accessor :id
     
@@ -18,8 +18,8 @@ class Vk
         current_match_format = current_match_html.css('div#mapformatbox').text.split(' ')[2]
     
         @post_message = 'Game '+team1+' VS. '+team2+ ' Best of '+current_match_format
-        @method = 'wall.post'
-        @vk_post_former = 'https://api.vk.com/method/'
+        # @method = 'wall.post'
+        # @vk_post_former = 'https://api.vk.com/method/'
         
     end
     
@@ -32,6 +32,8 @@ class Vk
             make_post('addComment') 
             response_id = JSON.parse((Net::HTTP.get_response(URI(@vk_post_former))).body)["response"]["comment_id"] 
             @current_match_links.update(comment_id: response_id)
+            
+            
         else
             make_post
             response_id = JSON.parse((Net::HTTP.get_response(URI(@vk_post_former))).body)["response"]["post_id"] 
