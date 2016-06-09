@@ -14,40 +14,34 @@
  *= require_self
  */
 
-.team_logo{
-    width:30px;
-    max-height: 30px;
-    padding:5px;
-}
-
-.team_logo_80{
-    width: 80px;
-    min-height: 80px;
-}
-
-.match-box {
+.match {
     border: 1px solid black ;
     min-height: 300px;
     min-width: 250px;
     margin-bottom: 10px;
     margin-left: 20px;
+    /*box-shadow: 0 0 30px 2px black;*/
+    transition: .2s linear;
+}
+
+.match:hover {
+    box-shadow: 0 0 25px 3px black;
+}
+
+.match:hover .match__logo {
+    max-height: 100%;
+    max-width: 70%;
     
 }
 
-
-.match-box:hover .team-logo {
-    max-height: 100%;
-    max-width: 70%;
-}
-
-.team-box {
+.match__team {
     text-align: center;
     position: relative;
     height: 140px;
     overflow: hidden;
 }
 
-.team-logo{
+.match__logo{
     z-index: 5;
     position: absolute;
     margin: auto;
@@ -57,10 +51,10 @@
     left: 0;
     max-height: 200%;
     opacity: 0.7;
-    transition: 100ms linear;
+    transition: 200ms linear;
 }
 
-.team-name {
+.match__organization {
     z-index: 10;
     font-size: 40px;
     font-weight: 700;
@@ -70,7 +64,7 @@
     left: 0;
 }
 
-.team-name:nth-child(even) {
+.match__organization:nth-child(even) {
     bottom: 0;
     background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.86) 46%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.86) 46%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -79,7 +73,7 @@
 
 }
 
-.team-name:nth-child(odd){
+.match__organization:nth-child(odd){
     background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.61) 60%, rgba(255,255,255,0) 100%);
     /* background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0.61) 60%,rgba(255,255,255,0) 100%); */
     background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0.61) 60%,rgba(255,255,255,0) 100%);
@@ -87,9 +81,15 @@
 
 }
 
-.status {
-    width: 190px;
-    height: 30px;
+
+.team_logo_80{
+    width: 80px;
+    min-height: 80px;
+}
+
+.large-text {
+    font-size: 3em;
+    margin: 0;
 }
 
 *= require bootstrap-theme.css

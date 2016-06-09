@@ -1,3 +1,4 @@
+# отправка поста Вк
 class Vk_test
     
     attr_accessor :id
@@ -18,8 +19,8 @@ class Vk_test
         current_match_format = current_match_html.css('div#mapformatbox').text.split(' ')[2]
     
         @post_message = 'Game '+team1+' VS. '+team2+ ' Best of '+current_match_format
-        # @method = 'wall.post'
-        # @vk_post_former = 'https://api.vk.com/method/'
+        @method = 'wall.post'
+        @vk_post_former = 'https://api.vk.com/method/'
         
     end
     
