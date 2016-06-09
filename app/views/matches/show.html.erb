@@ -1,5 +1,5 @@
 <div class="container">
-  
+  <!--Определяем статус матча-->
   <% if @match.status==1
     @color='PaleGreen'
     elsif @match.status==0
@@ -8,28 +8,47 @@
     end %>
     
   <div class="row">
-    <div class="col-sm-4 col-sm-offset-1 text-right">
+    <div class="col-sm-3 col-sm-offset-1 text-right">
       <h1><%= @match.team1 %>
       <img class ="team_logo_80" src=<%= @match.t1_logo %>></h1>
     </div>
-    <div class="col-sm-4 col-sm-offset-1">
+    <div class="col-sm-2 text-center">
+      <h4>
+        BO<%= @match_stats[:format] %>
+      </h4>
+      <!--Парсим данные карты, получаем кол-во очков в последней карте-->
+      <% n=@match_stats[:format].to_i %> 
+      <% regexp = /\d?\d:\d?\d/ %>
+      <% match_score = @match_stats[:maps][n].text.scan(regexp)%>
+      
+      <div class="text-center">
+        <p class="large-text"><%=match_score[0]%></p>
+      </div>
+      (<%=match_score[1]%> : <%=match_score[2]%>)
+    </div>
+    <div class="col-sm-4">
       <h1><img class ="team_logo_80" src=<%= @match.t2_logo %>>
       <%= @match.team2 %></h1> 
     </div>
   </div>
+  <br/>
   <div class="row">
-    <div class="col-sm-3 col-sm-offset-5 text-center">
-      <p>best of <%= @match_stats[:format] %></p>
+    <div class="col-sm-4 col-sm-offset-3 text-center">
+      <!--Кол-во карт и счет-->
+      <% n=@match_stats[:format].to_i %>
+      <% for i in 1..n%>
+        <% reg = /\d?\d:\d?\d/ %>
+        <% stats = @match_stats[:maps][i].text.scan(reg)%>
+        <p>Score on map <%=i%>: <%=stats[0]%>  (<%=stats[1]%> : <%=stats[2]%>) </p>
+      <% end %>
     </div>
-    <% n=@match_stats[:format].to_i %>
-    <% for i in 1..n%>
-    <div class="col-sm-3 col-sm-offset-5 text-center">
-      <% reg = /\d?\d:\d?\d/ %>
-      <% stats = @match_stats[:maps][i].text.scan(reg)%>
-      Score on map <%=i%>: <%=stats[0]%> (<%=stats[1]%> : <%=stats[2]%>)
-    </div>
-    <% end %>
-    <%= @pid %>
+    
+    
+    <!--Пока не реализованно-->
+    <!--Отправка поста в группу вк-->
+    <%= @pid %> 
+    <!--Онлайн парсинг счета -->
     <%= @t_team %> <%= @t_score %> : <%= @ct_score %> <%= @ct_team %>
+    
   </div>
 </div>

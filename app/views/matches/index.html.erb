@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-center">
     <% @matches.each do |mtch| %>
-    
+    <!--определяем статус матча-->
     <% if mtch[:time].is_a?(String)      
      if mtch[:time].downcase == 'live'
          color = 'PaleGreen'
@@ -12,16 +12,17 @@
     else color = 'Beige'
     end %>
     
+    <!--TODO: Заменить на jQ .onclick-->
     <%= link_to match_path(mtch[:m_id]) do %>
-    <div class="col-md-2 match-box text-center ">
-        <div class="row team-box">
-            <img  class='team-logo' src=<%= mtch[:t1_logo] %>></img><h2 class="team-name"><%= mtch[:team1] %></h2>
+    <div class="col-md-2 text-center match">
+        <div class="row match__team">
+            <img  class='match__logo' src=<%= mtch[:t1_logo] %>></img><h2 class="match__organization"><%= mtch[:team1] %></h2>
         </div>
-        <div class="row status-box" style="background-color:<%= color %>">
+        <div class="row match__status" style="background-color:<%= color %>">
             <%= mtch[:time].is_a?(DateTime) ? mtch[:time].strftime("%H:%M") : mtch[:time] %> 
         </div>
-        <div class="row team-box">
-            <h2 class="team-name"><%= mtch[:team2] %></h2> <img  class='team-logo' src=<%= mtch[:t2_logo] %>></img>
+        <div class="row match__team">
+            <h2 class="match__organization"><%= mtch[:team2] %></h2> <img  class='match__logo' src=<%= mtch[:t2_logo] %>></img>
         </div>
     </div>
     <% end %>
