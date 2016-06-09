@@ -25,15 +25,67 @@
     min-height: 80px;
 }
 
-.h1 {
-    font-size:  3em;
-}
-
-/* vertical centr*/
-.vc {
+.match-box {
+    border: 1px solid black ;
+    min-height: 300px;
+    min-width: 250px;
+    margin-bottom: 10px;
+    margin-left: 20px;
     
 }
 
+
+.match-box:hover .team-logo {
+    max-height: 100%;
+    max-width: 70%;
+}
+
+.team-box {
+    text-align: center;
+    position: relative;
+    height: 140px;
+    overflow: hidden;
+}
+
+.team-logo{
+    z-index: 5;
+    position: absolute;
+    margin: auto;
+    top: 0; 
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-height: 200%;
+    opacity: 0.7;
+    transition: 100ms linear;
+}
+
+.team-name {
+    z-index: 10;
+    font-size: 40px;
+    font-weight: 700;
+    position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+}
+
+.team-name:nth-child(even) {
+    bottom: 0;
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.86) 46%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.86) 46%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.86) 46%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+}
+
+.team-name:nth-child(odd){
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.61) 60%, rgba(255,255,255,0) 100%);
+    /* background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0.61) 60%,rgba(255,255,255,0) 100%); */
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0.61) 60%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+
+}
 
 .status {
     width: 190px;

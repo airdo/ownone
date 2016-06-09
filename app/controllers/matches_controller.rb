@@ -3,7 +3,9 @@ class MatchesController < ApplicationController
     require 'net/http'
     require 'json'
     require 'hltv_parser'
-    require 'vk_class'
+    # require 'vk_class'
+    
+    
     def index
       @matches = Hltv.parse
     end
@@ -11,11 +13,14 @@ class MatchesController < ApplicationController
     def show
       @match = MatchesList.find_by m_id: params[:id]
       @match_stats = Hltv.parse(params[:id])
-      @current_match = Vk.new(params[:id])
     end
     
     def past
       @matches = MatchesList.all
+    end
+   
+    def post
+      @current_match = VK::Application.new(app_id: 66597298, access_token: '3f236b7160e499f5a5cb906005329f1198970a66ae9e7b7b02e8f040c313e1130f88f0f371cc1f32b3468')
     end
    
     private

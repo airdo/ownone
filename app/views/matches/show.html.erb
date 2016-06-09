@@ -8,24 +8,11 @@
     end %>
     
   <div class="row">
-    
-    <div class="col-sm-1 status">
-    
-    </div>
-    <div class="col-sm-4 text-right">
-      
+    <div class="col-sm-4 col-sm-offset-1 text-right">
       <h1><%= @match.team1 %>
       <img class ="team_logo_80" src=<%= @match.t1_logo %>></h1>
     </div>
-    <div class="col-sm-1">
-      <div class="col-sm-6">
-        
-      </div>
-      <div class="col-sm-6">
-        
-      </div>
-    </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 col-sm-offset-1">
       <h1><img class ="team_logo_80" src=<%= @match.t2_logo %>>
       <%= @match.team2 %></h1> 
     </div>
@@ -42,13 +29,7 @@
       Score on map <%=i%>: <%=stats[0]%> (<%=stats[1]%> : <%=stats[2]%>)
     </div>
     <% end %>
-    <a href=<%=@current_match.send %>>Post</a>
-    
+    <%= @pid %>
     <%= @t_team %> <%= @t_score %> : <%= @ct_score %> <%= @ct_team %>
   </div>
-    
-    
-    
-    
-    
 </div>
